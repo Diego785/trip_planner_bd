@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ruta extends Model
+class Punto extends Model
 {
     protected $fillable = [
         'id',
@@ -20,7 +20,12 @@ class Ruta extends Model
         'PuntoD',
         'LongiD',
         'LatiD',
+        'recorrido_id',
     ];
 
     use HasFactory;
+
+    public function recorrido(){
+        return $this->belongsTo(Recorrido::class, 'recorrido_id');
+    }
 }

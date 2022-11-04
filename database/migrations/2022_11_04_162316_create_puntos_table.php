@@ -13,19 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rutas', function (Blueprint $table) {
-            $table->smallInteger('id');
+        Schema::create('puntos', function (Blueprint $table) {
+            $table->unsignedSmallInteger('id');
             $table->string('Shape', 5);
             $table->string('FID_stops2', 4);
-            $table->float('Longi');
-            $table->float('Lati');
+            $table->float('Longi', 8, 4);
+            $table->float('Lati', 8, 4);
             $table->string('Punto', 4);
             $table->string('Tipo', 1);
-            $table->string('code', 5);
             $table->smallInteger('orden');
             $table->string('PuntoD', 4);
-            $table->float('LongiD');
-            $table->float('LatiD');
+            $table->float('LongiD', 8, 4);
+            $table->float('LatiD', 8, 4);
+            $table->unsignedBigInteger('recorrido_id')->nullable();
+            $table->foreign('recorrido_id')->references('id')->on('recorridos');
         });
     }
 
@@ -36,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rutas');
+        Schema::dropIfExists('puntos');
     }
 };
