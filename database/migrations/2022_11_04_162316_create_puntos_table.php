@@ -17,8 +17,8 @@ return new class extends Migration
             $table->unsignedSmallInteger('id');
             $table->string('Shape', 5);
             $table->string('FID_stops2', 4);
-            $table->float('Longi', 8, 4);
-            $table->float('Lati', 8, 4);
+            $table->decimal('longi', 8, 4);
+            $table->decimal('lati', 8, 4);
             $table->string('Punto', 4);
             $table->string('Tipo', 1);
             $table->smallInteger('orden');
