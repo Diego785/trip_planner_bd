@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('telefono', 10);
             $table->string('email', 30);
             $table->string('foto');
-            $table->string('descripcion', 40);
+            $table->string('descripcion');
         });
     }
 

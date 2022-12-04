@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('recorridos', function (Blueprint $table) {
             $table->id();
-            $table->string('code',4);
+            $table->string('code',5);
             $table->float('tiempo');
             $table->float('distancia');
             $table->float('velocidad');
             $table->string('color', 10);
             $table->tinyInteger('grosor');
-            $table->string('descripcion', 50);
+            $table->string('descripcion');
             $table->unsignedBigInteger('linea_id')->nullable();
             $table->foreign('linea_id')->references('id')->on('lineas');
             

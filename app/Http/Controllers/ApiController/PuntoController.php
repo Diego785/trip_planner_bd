@@ -13,20 +13,20 @@ class PuntoController extends Controller
     {
         try {
             $punto = Punto::join('recorridos', 'puntos.recorrido_id', 'recorridos.id')
-            ->select('puntos.id', 'puntos.longi', 'puntos.lati', 'recorridos.id as recorridos_id', 'recorridos.linea_id')
+            ->select('puntos.id', 'puntos.longi', 'puntos.lati', 'recorridos.id as recorridos_id', 'recorridos.linea_id', 'recorridos.color')
             ->where('recorridos.linea_id', $request->recorrido)
             ->first();
             $id = $punto->recorridos_id;
             $punto = $punto->recorridos_id % 2;
             if($punto == $request->par){
                 $puntos = Punto::join('recorridos', 'puntos.recorrido_id', 'recorridos.id')
-                ->select('puntos.id', 'puntos.longi', 'puntos.lati', 'recorridos.id as recorridos_id', 'recorridos.linea_id')
+                ->select('puntos.id', 'puntos.longi', 'puntos.lati', 'recorridos.id as recorridos_id', 'recorridos.linea_id', 'recorridos.color')
                 ->where('recorridos.linea_id', $request->recorrido)->where('recorridos.id', $id)
                 ->get();
             }else{
                 $id = $id + 1;
                 $puntos = Punto::join('recorridos', 'puntos.recorrido_id', 'recorridos.id')
-                ->select('puntos.id', 'puntos.longi', 'puntos.lati', 'recorridos.id as recorridos_id', 'recorridos.linea_id')
+                ->select('puntos.id', 'puntos.longi', 'puntos.lati', 'recorridos.id as recorridos_id', 'recorridos.linea_id', 'recorridos.color')
                 ->where('recorridos.linea_id', $request->recorrido)->where('recorridos.id', $id)
                 ->get();
             }
