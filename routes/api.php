@@ -27,11 +27,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // LINEA
 Route::get('linea', [LineaController::class, 'index'])->name('linea');
 
-// RUTA
+// PUNTO
 Route::get('punto', [PuntoController::class, 'index'])->name('punto');
+Route::get('allpoints', [PuntoController::class, 'allPoints'])->name('all-points');
 
 // RECORRIDO
 Route::get('recorrido', [RecorridoController::class, 'index'])->name('recorrido');
+Route::get('recorridoLinea', [RecorridoController::class, 'recorridoLinea'])->name('recorrido.linea');
 
 
 
